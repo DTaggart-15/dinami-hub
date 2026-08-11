@@ -1,4 +1,7 @@
 import { createTicker } from './components/ticker.js';
+import { createProjectDialog } from './components/project-dialog.js';
+import { createProjectGrid } from './components/project-grid.js';
+import { projects } from './content/projects.js';
 import { siteCopy } from './content/site.js';
 import { applyLanguage, persistLanguage, readLanguage } from './lib/language.js';
 
@@ -6,9 +9,29 @@ export function createApp({ document: doc, storage }) {
   let language = readLanguage(storage);
   const languageButtons = [...doc.querySelectorAll('[data-language]')];
   const tickerMount = doc.querySelector('#tool-ticker');
+  const projectMount = doc.querySelector('#project-grid');
+  const dialogMount = doc.querySelector('#dialog-root');
 
   if (tickerMount) {
     tickerMount.replaceChildren(createTicker(siteCopy[language].tools.items, siteCopy[language].tools.label));
+  }
+
+  const projectDialog = createProjectDialog({
+    getLanguage: () => language,
+    getCopy: () => siteCopy[language],
+  });
+  dialogMount?.replaceChildren(projectDialog.element);
+
+  function renderProjects() {
+    if (!projectMount) return;
+    projectMount.replaceChildren(
+      createProjectGrid({
+        projects,
+        language,
+        copy: siteCopy[language],
+        onOpen: (project, trigger) => projectDialog.open(project, trigger),
+      }),
+    );
   }
 
   function renderLanguage(nextLanguage) {
@@ -17,6 +40,8 @@ export function createApp({ document: doc, storage }) {
     doc.title = copy.meta.title;
     doc.querySelector('meta[name="description"]')?.setAttribute('content', copy.meta.description);
     doc.querySelector('.tool-ticker')?.setAttribute('aria-label', copy.tools.label);
+    renderProjects();
+    if (projectDialog.isOpen()) projectDialog.refresh();
 
     languageButtons.forEach((button) => {
       button.setAttribute('aria-pressed', String(button.dataset.language === language));
@@ -40,5 +65,6 @@ export function createApp({ document: doc, storage }) {
   return {
     getLanguage: () => language,
     setLanguage: (nextLanguage) => renderLanguage(persistLanguage(storage, nextLanguage)),
+    projectDialog,
   };
 }

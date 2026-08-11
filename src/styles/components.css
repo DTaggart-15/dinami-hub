@@ -196,6 +196,196 @@
   color: var(--color-paper-raised);
 }
 
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.project-folder {
+  position: relative;
+  display: flex;
+  min-height: 29rem;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 3rem);
+  border: 1px solid color-mix(in srgb, var(--folder-color, var(--color-line)) 62%, var(--color-line));
+  border-radius: 0 var(--radius-medium) var(--radius-medium) var(--radius-medium);
+  background: color-mix(in srgb, var(--folder-color, var(--color-paper-raised)) 28%, var(--color-paper-raised));
+}
+
+.project-folder__tab {
+  position: absolute;
+  width: 42%;
+  height: 1.15rem;
+  inset: -1.1rem auto auto -1px;
+  border: 1px solid color-mix(in srgb, var(--folder-color, var(--color-line)) 62%, var(--color-line));
+  border-bottom: 0;
+  border-radius: 0.65rem 0.65rem 0 0;
+  background: color-mix(in srgb, var(--folder-color, var(--color-paper-raised)) 28%, var(--color-paper-raised));
+}
+
+.project-folder--follower-forecast {
+  --folder-color: #c9bdd5;
+}
+
+.project-folder--english-portfolio {
+  --folder-color: #c8d0c3;
+}
+
+.project-folder--ai-content-os {
+  --folder-color: #d8c3b1;
+}
+
+.project-folder--creative-lab {
+  --folder-color: #b9c9d2;
+}
+
+.project-folder__topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--color-muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.project-folder__status::before {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-lavender-deep);
+  content: '';
+}
+
+.project-folder__type {
+  margin: auto 0 0.6rem;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-folder h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4.4vw, 4.8rem);
+  font-weight: 430;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+}
+
+.project-folder__description {
+  max-width: 33rem;
+  min-height: 3.2em;
+  margin: 1.25rem 0;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.project-folder__tags,
+.project-dialog__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.project-folder__tags li,
+.project-dialog__tags li {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgb(36 35 33 / 18%);
+  border-radius: 999px;
+  font-size: 0.67rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.project-folder__action {
+  align-self: flex-start;
+  padding: 0.7rem 0;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: transparent;
+  color: var(--color-ink);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.project-dialog {
+  width: min(62rem, calc(100% - 2rem));
+  max-height: calc(100svh - 2rem);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-medium);
+  background: var(--color-paper-raised);
+  color: var(--color-ink);
+}
+
+.project-dialog::backdrop {
+  background: rgb(25 24 22 / 72%);
+  backdrop-filter: blur(0.35rem);
+}
+
+.project-dialog__panel {
+  padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+.project-dialog__topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+}
+
+.project-dialog__close {
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.project-dialog h2 {
+  max-width: 12ch;
+  margin: 2rem 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 430;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+}
+
+.project-dialog__detail,
+.project-dialog__empty {
+  max-width: 45rem;
+  color: var(--color-muted);
+  line-height: 1.65;
+}
+
+.project-dialog__media {
+  display: grid;
+  margin-top: 2rem;
+}
+
+.project-dialog__media img,
+.project-dialog__media video {
+  display: block;
+  width: 100%;
+  max-height: 65svh;
+  border-radius: var(--radius-small);
+  object-fit: contain;
+  background: #ddd9d1;
+}
+
 .contact-strip .eyebrow,
 .contact-strip__inner > p:not(.eyebrow) {
   color: #bcb7ae;
@@ -225,5 +415,13 @@
 
   .portrait-notes__heading {
     font-size: 1.4rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-folder {
+    min-height: 24rem;
   }
 }
