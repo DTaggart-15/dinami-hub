@@ -16,7 +16,7 @@ export function createTicker(items, label = 'AI tools') {
       ),
     );
 
-  return h('div', { className: 'tool-ticker', attrs: { 'aria-label': label } }, [
+  return h('div', { className: 'tool-ticker', attrs: { role: 'group', 'aria-label': label } }, [
     createSequence(false),
     createSequence(true),
   ]);

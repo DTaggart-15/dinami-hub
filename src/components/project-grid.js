@@ -1,7 +1,7 @@
 import { h } from '../lib/dom.js';
 import { safePublicUrl } from '../lib/urls.js';
 
-function createAction(project, copy, onOpen) {
+function createAction(project, projectCopy, copy, onOpen) {
   if (project.action === 'external') {
     return h('a', {
       className: 'project-folder__action',
@@ -10,6 +10,7 @@ function createAction(project, copy, onOpen) {
         href: safePublicUrl(project.href),
         target: '_blank',
         rel: 'noopener noreferrer',
+        'aria-label': `${copy.actions.open}: ${projectCopy.title}`,
       },
     });
   }
@@ -17,7 +18,7 @@ function createAction(project, copy, onOpen) {
   const button = h('button', {
     className: 'project-folder__action',
     text: copy.actions.view,
-    attrs: { type: 'button' },
+    attrs: { type: 'button', 'aria-label': `${copy.actions.view}: ${projectCopy.title}` },
   });
   button.addEventListener('click', () => onOpen(project, button));
   return button;
@@ -46,7 +47,7 @@ export function createProjectGrid({ projects, language, copy, onOpen }) {
         h('h3', { text: projectCopy.title, attrs: { id: titleId } }),
         h('p', { className: 'project-folder__description', text: projectCopy.description }),
         tagList,
-        createAction(project, copy, onOpen),
+        createAction(project, projectCopy, copy, onOpen),
       ]);
     }),
   );
