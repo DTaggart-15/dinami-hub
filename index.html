@@ -5,20 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Дина Ми — AI-креатор и вайб-кодер. Проекты, эксперименты и контакты."
+      content="Цифровые продукты, агентные процессы и визуальные эксперименты Dina Mi."
     />
     <meta name="theme-color" content="#f0eee8" />
-    <title>Дина Ми — AI-креатор и вайб-кодер</title>
+    <title>Dina Mi — AI Product Builder</title>
   </head>
-  <body>
+  <body id="top">
     <a class="skip-link" href="#main">Перейти к содержанию</a>
+
+    <header class="site-header shell" aria-label="Основная навигация">
+      <a class="wordmark" href="#top" aria-label="Dina Mi — наверх">0xDINAMI</a>
+      <nav class="site-nav" aria-label="Разделы">
+        <a href="#about" data-i18n="nav.about">Обо мне</a>
+        <a href="#work" data-i18n="nav.work">Проекты</a>
+        <a href="#contact" data-i18n="nav.contact">Контакты</a>
+      </nav>
+      <div class="header-actions">
+        <a href="https://t.me/DinaStam" rel="noopener noreferrer" target="_blank">TG</a>
+        <a href="https://x.com/0xDinami" rel="noopener noreferrer" target="_blank">X</a>
+        <div class="language-switcher" aria-label="Выбор языка">
+          <button type="button" data-language="ru" aria-pressed="true">RU</button>
+          <span aria-hidden="true">/</span>
+          <button type="button" data-language="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </header>
+
     <main id="main">
-      <section class="shell" aria-labelledby="page-title">
-        <p class="eyebrow">Портфолио · Екатеринбург</p>
-        <h1 id="page-title">Дина Ми</h1>
-        <p>AI-креатор и вайб-кодер. Собираю работающие идеи из кода, контента и нейросетей.</p>
+      <section class="hero shell" id="about" aria-labelledby="hero-title">
+        <div class="hero__copy">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Independent AI product builder</p>
+          <h1 id="hero-title" data-i18n="hero.title">Превращаю идеи в работающие системы.</h1>
+          <p class="hero__description" data-i18n="hero.description">Инженер по мышлению, независимый AI-билдер по практике. Проектирую цифровые продукты, агентные процессы и визуальные эксперименты.</p>
+          <div class="hero__contacts" aria-label="Быстрые контакты">
+            <a href="mailto:didinamit.1@gmail.com">Email</a>
+            <a href="https://t.me/DinaStam" rel="noopener noreferrer" target="_blank">Telegram ↗</a>
+          </div>
+        </div>
+
+        <figure class="hero__portrait">
+          <img src="/media/dina-hero.webp" alt="Dina Mi" width="960" height="1280" />
+          <figcaption class="portrait-notes">
+            <p class="portrait-notes__heading" data-i18n="notes.heading">Полезные системы, созданные с AI.</p>
+            <ol aria-label="Направления работы">
+              <li><span>01</span><p data-i18n="notes.product">Продуктовое направление · От идеи к рабочему инструменту</p></li>
+              <li><span>02</span><p data-i18n="notes.agents">Агентные процессы · Этапы, проверки, итерации</p></li>
+              <li><span>03</span><p data-i18n="notes.visual">Визуальные эксперименты · Изображение, видео, движение</p></li>
+            </ol>
+          </figcaption>
+          <p class="portrait-credit">DINA MI · YEKATERINBURG</p>
+        </figure>
       </section>
+
+      <section class="tools-band" aria-labelledby="tools-label">
+        <h2 class="visually-hidden" id="tools-label" data-i18n="tools.label">AI-инструменты</h2>
+        <div id="tool-ticker"></div>
+      </section>
+
+      <section class="work shell section" id="work" aria-labelledby="work-title">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="work.eyebrow">Рабочее пространство</p>
+          <h2 id="work-title" data-i18n="work.title">Избранные проекты</h2>
+          <p data-i18n="work.description">Готовые продукты, системы в работе и творческие эксперименты.</p>
+        </div>
+        <div id="project-grid" class="project-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="contact-strip" id="contact" aria-labelledby="contact-title">
+        <div class="shell contact-strip__inner">
+          <p class="eyebrow" data-i18n="contact.eyebrow">Контакты</p>
+          <h2 id="contact-title" data-i18n="contact.title">Давайте сделаем что-то полезное.</h2>
+          <p data-i18n="contact.description">Открыта к AI-продуктам, автоматизации и визуальным экспериментам.</p>
+          <div id="contact-list"></div>
+        </div>
+      </section>
+      <div id="dialog-root"></div>
     </main>
+
+    <footer class="site-footer shell">
+      <p>© 2026 DINA MI</p>
+      <a href="#top" data-i18n="footer.back">Наверх</a>
+    </footer>
     <noscript>Для интерактивных элементов сайта нужен JavaScript.</noscript>
     <script type="module" src="/src/main.js"></script>
   </body>

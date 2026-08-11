@@ -11,7 +11,8 @@ describe('document foundation', () => {
 
     expect(document.documentElement.lang).toBe('ru');
     expect(document.querySelector('main')).not.toBeNull();
-    expect(document.querySelector('h1')?.textContent).toContain('Дина');
+    expect(document.querySelector('h1')?.textContent).toContain('Превращаю идеи');
+    expect(document.querySelector('.wordmark')?.textContent).toBe('0xDINAMI');
     expect(document.querySelector('script[type="module"]')?.getAttribute('src')).toBe(
       '/src/main.js',
     );

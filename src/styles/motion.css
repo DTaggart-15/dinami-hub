@@ -1,0 +1,35 @@
+@keyframes ticker-scroll {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.tool-ticker__sequence {
+  animation: ticker-scroll 32s linear infinite;
+}
+
+.tool-ticker:hover .tool-ticker__sequence {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .tool-ticker__sequence {
+    animation: none !important;
+  }
+
+  .tool-ticker {
+    overflow-x: auto;
+  }
+
+  .tool-ticker__sequence[aria-hidden='true'] {
+    display: none;
+  }
+}
