@@ -469,17 +469,34 @@
 }
 
 @media (max-width: 42rem) {
-  .hero__portrait,
+  .hero__portrait {
+    min-height: 0;
+    overflow: hidden;
+  }
+
   .hero__portrait > img {
-    min-height: 38rem;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
   }
 
   .portrait-notes {
-    width: 52%;
+    position: static;
+    width: auto;
+    padding: 1.5rem;
+    background: var(--color-paper-raised);
   }
 
   .portrait-notes__heading {
     font-size: 1.4rem;
+  }
+
+  .portrait-credit {
+    position: static;
+    display: inline-block;
+    margin: 0 1.5rem 1.5rem;
+    background: var(--color-paper);
   }
 
   .project-grid {
@@ -488,6 +505,22 @@
 
   .project-folder {
     min-height: 24rem;
+  }
+
+  .contact-links__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-link:nth-child(odd),
+  .contact-link:nth-child(even) {
+    padding-inline: 0;
+    border-right: 0;
+  }
+}
+
+@media (max-width: 62rem) {
+  .site-nav {
+    display: none;
   }
 
   .contact-links__grid {
