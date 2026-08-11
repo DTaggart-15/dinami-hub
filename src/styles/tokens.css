@@ -1,0 +1,16 @@
+:root {
+  color-scheme: light;
+  --color-paper: #f0eee8;
+  --color-paper-raised: #f8f7f2;
+  --color-ink: #242321;
+  --color-muted: #6d6962;
+  --color-line: #cbc7bf;
+  --color-lavender: #b8a7cf;
+  --color-lavender-deep: #735d90;
+  --font-display: 'Newsreader Variable', Georgia, serif;
+  --font-body: 'Inter', Arial, sans-serif;
+  --page-gutter: clamp(1rem, 4vw, 4rem);
+  --content-width: 90rem;
+  --radius-small: 0.35rem;
+  --radius-medium: 1rem;
+}
