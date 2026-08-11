@@ -5,6 +5,6 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./tests/setup.js'],
     clearMocks: true,
-    exclude: ['tests/e2e/**', 'node_modules/**'],
+    exclude: ['tests/e2e/**', '.worktrees/**', 'node_modules/**'],
   },
 });
