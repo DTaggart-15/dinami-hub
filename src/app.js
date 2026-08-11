@@ -2,8 +2,10 @@ import { createTicker } from './components/ticker.js';
 import { createProjectDialog } from './components/project-dialog.js';
 import { createProjectGrid } from './components/project-grid.js';
 import { projects } from './content/projects.js';
+import { contacts } from './content/contacts.js';
 import { siteCopy } from './content/site.js';
 import { applyLanguage, persistLanguage, readLanguage } from './lib/language.js';
+import { updateMetadata } from './lib/metadata.js';
 
 export function createApp({ document: doc, storage }) {
   let language = readLanguage(storage);
@@ -11,6 +13,7 @@ export function createApp({ document: doc, storage }) {
   const tickerMount = doc.querySelector('#tool-ticker');
   const projectMount = doc.querySelector('#project-grid');
   const dialogMount = doc.querySelector('#dialog-root');
+  const contactMount = doc.querySelector('#contact-list');
 
   if (tickerMount) {
     tickerMount.replaceChildren(createTicker(siteCopy[language].tools.items, siteCopy[language].tools.label));
@@ -34,13 +37,23 @@ export function createApp({ document: doc, storage }) {
     );
   }
 
+  function renderContacts() {
+    contactMount?.replaceChildren(
+      createContactLinks({
+        contacts,
+        copy: siteCopy[language],
+        clipboard: doc.defaultView?.navigator?.clipboard,
+      }),
+    );
+  }
+
   function renderLanguage(nextLanguage) {
     language = applyLanguage(doc, nextLanguage, siteCopy[nextLanguage] ?? siteCopy.ru);
     const copy = siteCopy[language];
-    doc.title = copy.meta.title;
-    doc.querySelector('meta[name="description"]')?.setAttribute('content', copy.meta.description);
+    updateMetadata(doc, copy.meta);
     doc.querySelector('.tool-ticker')?.setAttribute('aria-label', copy.tools.label);
     renderProjects();
+    renderContacts();
     if (projectDialog.isOpen()) projectDialog.refresh();
 
     languageButtons.forEach((button) => {
@@ -68,3 +81,4 @@ export function createApp({ document: doc, storage }) {
     projectDialog,
   };
 }
+import { createContactLinks } from './components/contact-links.js';
