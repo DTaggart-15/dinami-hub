@@ -1,10 +1,10 @@
 const tools = Object.freeze([
   'ChatGPT',
   'Codex',
-  'Groq',
+  'Grok',
   'Kling',
   'Sora',
-  'SeaDream',
+  'Seedream',
   'Perplexity',
   'Qwen',
   'Kimi',
