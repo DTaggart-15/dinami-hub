@@ -73,7 +73,32 @@ export const projects = Object.freeze([
     status: 'ongoing',
     href: null,
     tags: Object.freeze(['Video', 'Image', 'Research']),
-    media: Object.freeze([]),
+    media: Object.freeze([
+      Object.freeze({
+        type: 'image',
+        src: '/media/creative-lab/floral-suit-portrait.webp',
+        alt: Object.freeze({
+          ru: 'Девушка в полосатом костюме среди белых и сиреневых цветов',
+          en: 'Woman in a pinstripe suit among white and lilac flowers',
+        }),
+      }),
+      Object.freeze({
+        type: 'image',
+        src: '/media/creative-lab/floral-shadow-portrait.webp',
+        alt: Object.freeze({
+          ru: 'Девушка в полосатом костюме в свете с тенями цветов',
+          en: 'Woman in a pinstripe suit framed by floral shadows',
+        }),
+      }),
+      Object.freeze({
+        type: 'image',
+        src: '/media/creative-lab/mirror-horror-scene.webp',
+        alt: Object.freeze({
+          ru: 'Девушка красится у зеркала, в отражении видна фигура в маске',
+          en: 'Woman applying makeup at a mirror with a masked figure in the reflection',
+        }),
+      }),
+    ]),
     copy: Object.freeze({
       ru: Object.freeze({
         type: 'Эксперименты',
